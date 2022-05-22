@@ -1,0 +1,33 @@
+.logo{
+    border-radius: 100px; /* Радиус скругления */
+    box-shadow: 0 0 7px #666; /* Параметры тени */
+    width: 70px;
+}
+.index_text{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    font-size:2rem;
+}
+.content{
+    /*border: 5px solid darkblue;*/
+    margin-top: 10%;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content_task{
+    margin-top: 3%;
+    display:flex;
+    flex-wrap: wrap;
+    height: 30px;
+    /*border:3px solid green;*/
+}
+.task{
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 20%;
+    height: 100%;
+    background: darkgray;
+    border:1px solid gold;
+}

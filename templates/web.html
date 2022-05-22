@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="content">
+    <div class="content_task">
+        {% for i in task %}
+        <div class="task">
+            <button type="button" class="btn btn-secondary" value={{i[0]}} onclick="newVal(this)" data-toggle="modal" data-target="#exampleModal">{{i[1]}}</button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">firstWeb</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div id="name"></div>
+                    <br>
+                    <div id="description"></div>
+                    <br>
+                    <div id="hint1"></div>
+                    <br>
+                    <div id="hint2"></div>
+                    <br>
+                    <div id="hint3"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function newVal(t)
+    {
+        var res = $(t).attr('value');
+        res = res - 1
+        console.log(res)
+        var task = {{task | safe}};
+        console.log(task)
+        console.log(task.length)
+        var name = document.getElementById('name');
+        name.innerHTML = task[Number(res)][1];
+        var description = document.getElementById('description');
+        description.innerHTML = task[Number(res)][2];
+        var hint1 = document.getElementById('hint1');
+        hint1.innerHTML = task[Number(res)][3];
+        var hint2 = document.getElementById('hint2');
+        hint2.innerHTML = task[Number(res)][4];
+        var hint3 = document.getElementById('hint3');
+        hint3.innerHTML = task[Number(res)][5];
+    }
+</script>
+{% endblock %}
