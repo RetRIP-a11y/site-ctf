@@ -16,19 +16,23 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">firstWeb</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><div id="category"></div></h5>
             </div>
             <div class="modal-body">
-                <form>
-                    <div id="name"></div>
+                <form method="POST" action="/check">
+                    <div name="name" id="name"></div>
                     <br>
                     <div id="description"></div>
+                    <br>
+                    <input type="text" name="flag" placeholder="Введите флаг">
                     <br>
                     <div id="hint1"></div>
                     <br>
                     <div id="hint2"></div>
                     <br>
                     <div id="hint3"></div>
+                    <br>
+                    <button type="submit" value="" id="btn" name="btn">Отправить ответ</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -44,21 +48,28 @@
     function newVal(t)
     {
         var res = $(t).attr('value');
-        res = res - 1
-        console.log(res)
+        res = res - 1;
+
         var task = {{task | safe}};
-        console.log(task)
-        console.log(task.length)
+        var ans = [res+1, task[Number(res)][1]];
+        $('#btn').val(ans);
+
+        console.log(res);
+
+        console.log(task);
+        console.log(task.length);
+        var category = document.getElementById('category');
+        category.innerHTML = task[Number(res)][1];
         var name = document.getElementById('name');
-        name.innerHTML = task[Number(res)][1];
+        name.innerHTML = task[Number(res)][2];
         var description = document.getElementById('description');
-        description.innerHTML = task[Number(res)][2];
+        description.innerHTML = task[Number(res)][3];
         var hint1 = document.getElementById('hint1');
-        hint1.innerHTML = task[Number(res)][3];
+        hint1.innerHTML = task[Number(res)][4];
         var hint2 = document.getElementById('hint2');
-        hint2.innerHTML = task[Number(res)][4];
+        hint2.innerHTML = task[Number(res)][5];
         var hint3 = document.getElementById('hint3');
-        hint3.innerHTML = task[Number(res)][5];
+        hint3.innerHTML = task[Number(res)][6];
     }
 </script>
 {% endblock %}

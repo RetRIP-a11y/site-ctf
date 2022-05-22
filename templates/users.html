@@ -1,0 +1,51 @@
+{% extends "base_ctf.html" %}
+{% block content %}
+
+{{content}}
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">login</th>
+        <th scope="col">role</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in content %}
+    <tr>
+        <th scope="row">{{i[0]}}</th>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>
+            <form action="delete_user" method="POST">
+                <button type="submit" name="id_delete" value={{i[0]}}>Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    <form action="/create_user" method="POST">
+        <tr>
+            <td>
+                <input type="text" placeholder="login" name="new_login">
+            </td>
+            <td>
+                <input type="text" placeholder="password" name="new_pass">
+            </td>
+            <td>
+                <select name="new_role" class="form-select" aria-label="Пример выбора по умолчанию">
+                    <option selected>Роль</option>
+                    <option value="root">root</option>
+                    <option value="hacker">hacker</option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Создать">
+            </td>
+        </tr>
+    </form>
+    </tbody>
+</table>
+
+{% endblock %}

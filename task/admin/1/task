@@ -1,0 +1,7 @@
+Category:Admin
+Name:find_string
+Description:флаг рядом со строкой оптимист
+hint1:h1
+hint2:h2
+hint3:h3
+answer:ctf{2022}
